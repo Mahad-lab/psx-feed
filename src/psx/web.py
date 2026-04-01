@@ -99,7 +99,7 @@ class DataReader:
 
     def preprocess(self, data: list) -> pd.DataFrame:
         # concatenate each frame to a single dataframe
-        data = pd.concat(data)
+        data = pd.concat([df for df in data if not df.empty])
         # sort the data by date
         data = data.sort_index()
         # change indexes from all uppercase to title
